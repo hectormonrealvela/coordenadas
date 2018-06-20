@@ -52,7 +52,6 @@ class Viewer:
                                  scale_factor=0.1)
 
 def picker_callback( picker):
-
     global cont
     cont += 1
     print
