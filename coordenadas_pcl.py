@@ -15,6 +15,7 @@ from getkey import getkey, keys
 import ICP
 import vtk
 
+cont=0
 
 class Viewer:
     def __init__(self):
@@ -31,10 +32,10 @@ class Viewer:
         self.tree.setProbHit(0.92)
         self.tree.setProbMiss(0.40)
 
+
     def draw(self):
 
         cloud_source = pcl.load('/home/hector/nubedepuntos/cloud_yaw_frame_number_9.pcd')
-
 
         #Points
         points_array = cloud_source.to_array()
@@ -51,9 +52,10 @@ class Viewer:
                                  color=(0, 0, 0),
                                  scale_factor=0.1)
 
-
 def picker_callback( picker):
 
+    global cont
+    cont += 1
 
     print
     print("Coordenadas: x: %i, y: %i  , z: %i" % (picker.pick_position))
@@ -64,13 +66,13 @@ def picker_callback( picker):
 
     points3d(x, y, z, color=(0, 0, 0), scale_factor=0.1, mode='sphere', scale_mode='none', reset_zoom=False)
 
+    with open('Bbdd_Frame_9.doc',"a") as file:
+        file.write(" BBdd Frame 9 Objeto num: %i  "%(cont))
+        file.write("Coordenada x: %i, Coordenada y: %i, Coordenada z: %i\n\n" %(picker.pick_position))
+        file.close()
 
 viewer = Viewer()
 viewer.draw()
 fig= mlab.figure(1)
-fig.on_mouse_pick(picker_callback)
+fig.on_mouse_pick(picker_callback,type='world')
 show()
-
-
-
-
