@@ -55,9 +55,8 @@ def picker_callback( picker):
 
     global cont
     cont += 1
-
     print
-    print("Coordenadas: x: %i, y: %i  , z: %i" % (picker.pick_position))
+    print("Coordenadas: x: %.2f, y: %.2f  , z: %.2f" % (picker.pick_position))
     print picker.pick_position
     print
 
@@ -67,7 +66,7 @@ def picker_callback( picker):
 
     with open('Bbdd_Frame_9.doc',"a") as file:
         file.write(" BBdd Frame 9 Objeto num: %i  "%(cont))
-        file.write("Coordenada x: %i, Coordenada y: %i, Coordenada z: %i\n\n" %(picker.pick_position))
+        file.write("Coordenada x: %.2f, Coordenada y: %.2f, Coordenada z: %.2f\n\n" %(picker.pick_position))
         file.close()
 
 viewer = Viewer()
