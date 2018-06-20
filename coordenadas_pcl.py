@@ -47,7 +47,6 @@ class Viewer:
         self.points3d_draw.mlab_source.reset(x=points_target[:, 0:1], y=points_target[:, 1:2], z=points_target[:, 2:3],
                                              scalars=points_target[:, 2:3])
 
-
         cursor3d = mlab.points3d(0., 0., 0., mode='sphere',
                                  color=(0, 0, 0),
                                  scale_factor=0.1)
