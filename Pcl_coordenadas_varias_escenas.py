@@ -73,12 +73,14 @@ class MyDialog(HasTraits):
 
     @on_trait_change('button1')
     def clear_figure(self):
-        for child in self.scene2.mayavi_scene.children:
+        p=0
+        while p<4:
+         for child in self.scene2.mayavi_scene.children:
             child.remove()
+
+        p+=1
             
-        for child in self.scene2.mayavi_scene.children:
-           child.remove()
-    
+        
 
 
     @on_trait_change('button2')
